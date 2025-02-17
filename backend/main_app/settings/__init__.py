@@ -18,7 +18,7 @@ _base_settings = (
     "components/*.py",
     'environments/{0}.py'.format(_env),
     # Optionally override some settings:
-    optional('environments/local.py'),
+    # optional('environments/local.py'),
 )
 
 # Include settings:

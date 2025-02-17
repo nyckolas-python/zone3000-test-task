@@ -88,7 +88,7 @@ If you prefer setting up and running the project locally, follow these steps:
    ```
 8. Load test data to the database:
    ```bash
-   python manage.py load_redirect_rules
+   python manage.py load_redirect_rules --username=<superuser>
    ```
 9. Run the development server:
    ```bash

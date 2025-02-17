@@ -62,4 +62,4 @@ class Command(BaseCommand):
             )
 
         except Exception as e:
-            raise CommandError(f'Error loading redirect rules: {str(e)}') 
+            raise CommandError(f'Error loading redirect rules: {str(e)}')
