@@ -19,7 +19,7 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
 
-LOGIN_REDIRECT_URL = "/api/v1/swagger/"
+LOGIN_REDIRECT_URL = "/swagger/"
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'ZONE3000 Project API',
@@ -28,14 +28,13 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
     "SWAGGER_UI_SETTINGS": {
         "deepLinking": True,
-        "displayOperationId": True,
+        "displayOperationId": False,
     },
     'SERVE_PERMISSIONS': ['rest_framework.permissions.IsAuthenticated'],
     "SERVE_AUTHENTICATION": [
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ],
-
 }
 
 SIMPLE_JWT = {

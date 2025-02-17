@@ -10,10 +10,10 @@ INSTALLED_APPS = [
     'rest_framework',
     "corsheaders",
     'rest_framework_simplejwt',
-    "drf_spectacular",
-    "django_filters",
+    'drf_spectacular',
+    'django_filters',
 
     # Local apps
-    "redirector_api.apps.RedirectorApiConfig",
+    'url_management.apps.UrlManagementConfig',
 
 ]

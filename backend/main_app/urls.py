@@ -19,20 +19,19 @@ urlpatterns = [
     path('swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger'),
     path('redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     # API endpoints
-    path(
-        "api/v1/", include(
-            [
-                # Auth endpoints
-                path(
-                    "auth/", include([
-                        # Token and refresh tokens endpoints
-                        path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-                        path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-                    ]),
-                ),
-            ],
-        ),
-    ),
+    # path(
+    #     "api/v1/", include(
+    #         [
+                path('retrieve-token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+                # path('refresh-token/', TokenRefreshView.as_view(), name='token_refresh'),
+                # path('users', include('users.urls')),
+                # better to use "urls" instead of "url"
+                path('url/', include('url_management.urls')),
+                # path('urls/', include('url_management.urls')),
+    #         ],
+    #     ),
+    # ),
+    # path('redirect/', include('redirector.urls')),
 ]
 
 if settings.DEBUG:
