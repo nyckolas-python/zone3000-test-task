@@ -1,0 +1,64 @@
+{
+    "redirect_rules": [
+        {
+            "redirect_url": "https://example.com/blog/post1",
+            "is_private": false
+        },
+        {
+            "redirect_url": "https://subdomain.example.com/docs",
+            "is_private": true
+        },
+        {
+            "redirect_url": "https://example.com/products/item1?category=electronics",
+            "is_private": false
+        },
+        {
+            "redirect_url": "https://example.com/users/profile#settings",
+            "is_private": true
+        },
+        {
+            "redirect_url": "https://another-domain.com/page",
+            "is_private": false
+        },
+        {
+            "redirect_url": "https://example.com/shop/cart?items=3&currency=USD",
+            "is_private": true
+        },
+        {
+            "redirect_url": "https://example.com/about?lang=en",
+            "is_private": false
+        },
+        {
+            "redirect_url": "https://api.example.com/v1/docs",
+            "is_private": true
+        },
+        {
+            "redirect_url": "https://example.com/contact#form",
+            "is_private": false
+        },
+        {
+            "redirect_url": "https://blog.example.com/post3?author=john",
+            "is_private": false
+        },
+        {
+            "redirect_url": "https://shop.example.com/products?category=books&sort=price",
+            "is_private": false
+        },
+        {
+            "redirect_url": "https://example.com/settings?theme=dark",
+            "is_private": true
+        },
+        {
+            "redirect_url": "https://help.example.com/faq#top",
+            "is_private": false
+        },
+        {
+            "redirect_url": "https://example.com/terms?version=2023",
+            "is_private": false
+        },
+        {
+            "redirect_url": "https://dashboard.example.com/analytics?period=month",
+            "is_private": true
+        }
+    ]
+}
