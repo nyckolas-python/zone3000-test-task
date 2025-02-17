@@ -24,14 +24,13 @@ urlpatterns = [
     #         [
                 path('retrieve-token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
                 # path('refresh-token/', TokenRefreshView.as_view(), name='token_refresh'),
-                # path('users', include('users.urls')),
+                path('users', include('users.urls')),
                 # better to use "urls" instead of "url"
                 path('url/', include('url_management.urls')),
                 # path('urls/', include('url_management.urls')),
     #         ],
     #     ),
     # ),
-    # path('redirect/', include('redirector.urls')),
 ]
 
 if settings.DEBUG:
