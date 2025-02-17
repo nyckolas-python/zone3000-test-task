@@ -31,6 +31,7 @@ urlpatterns = [
     #         ],
     #     ),
     # ),
+    path('redirect/', include('redirector.urls')),
 ]
 
 if settings.DEBUG:

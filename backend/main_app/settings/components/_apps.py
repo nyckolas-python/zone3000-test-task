@@ -16,5 +16,6 @@ INSTALLED_APPS = [
     # Local apps
     'url_management.apps.UrlManagementConfig',
     'users.apps.UsersConfig',
+    'redirector.apps.RedirectorConfig'
 
 ]
