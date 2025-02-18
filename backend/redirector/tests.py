@@ -28,7 +28,7 @@ def other_user():
 def auth_client(user):
     """Returns an authenticated API client"""
     client = APIClient()
-    client.force_authenticate(user=user)
+    client.force_login(user)
     return client
 
 
@@ -108,20 +108,20 @@ def test_private_redirect_unauthorized(api_client, private_rule):
             'redirect_identifier': private_rule.redirect_identifier
         })
     )
-    assert response.status_code == status.HTTP_401_UNAUTHORIZED
+    assert response.status_code == status.HTTP_302_FOUND
+    assert '/accounts/login/' in response.url
 
 
 @pytest.mark.django_db
-def test_private_redirect_wrong_user(other_user, private_rule):
+def test_private_redirect_wrong_user(other_user, api_client, private_rule):
     """Tests private redirect with non-owner user"""
-    client = APIClient()
-    client.force_authenticate(user=other_user)
-    response = client.get(
+    api_client.force_login(other_user)
+    response = api_client.get(
         reverse('private-redirect', kwargs={
             'redirect_identifier': private_rule.redirect_identifier
         })
     )
-    assert response.status_code == status.HTTP_404_NOT_FOUND
+    assert response.status_code == status.HTTP_403_FORBIDDEN
 
 
 @pytest.mark.django_db

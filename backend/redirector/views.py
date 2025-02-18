@@ -1,27 +1,31 @@
-from django.shortcuts import get_object_or_404, redirect, render
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework.response import Response
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
+from django.shortcuts import get_object_or_404, redirect
 from url_management.models import RedirectRule
 
 
-@api_view(['GET'])
-@permission_classes([AllowAny])
 def public_redirect(request, redirect_identifier):
     """
-        Public redirects - no authentication required
+    Public redirects - no authentication required
     """
-    rule = get_object_or_404(RedirectRule, redirect_identifier=redirect_identifier, is_private=False)
+    rule = get_object_or_404(
+        RedirectRule, redirect_identifier=redirect_identifier, is_private=False
+    )
     return redirect(rule.redirect_url)
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
+
+@login_required
 def private_redirect(request, redirect_identifier):
     """
-        Private redirects - access only for the owner
+    Private redirects - access only for the owner
     """
-    rule = get_object_or_404(RedirectRule,
-                             redirect_identifier=redirect_identifier,
-                             is_private=True,
-                             owner=request.user)
+    rule = get_object_or_404(
+        RedirectRule, redirect_identifier=redirect_identifier, is_private=True
+    )
+
+    if rule.owner != request.user:
+        return HttpResponseForbidden(
+            "You do not have permission to access this redirect."
+        )
+
     return redirect(rule.redirect_url)
