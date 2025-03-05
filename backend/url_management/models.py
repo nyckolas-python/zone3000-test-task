@@ -1,5 +1,6 @@
 import uuid
 
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.validators import URLValidator
 from django.db import models
@@ -9,6 +10,7 @@ class RedirectRule(models.Model):
     """
     Model for storing redirect rules.
     """
+    # owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     created = models.DateTimeField(auto_now_add=True)
